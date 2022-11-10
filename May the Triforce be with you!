@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    // VARIABLES
+    int a, b, c, n, x, y, z;
+    cin >> n; cin.ignore();
+    z = 1;  c = 1;  a = n*2;
+
+    // TOP TRIANGLE
+    for ( int i = 0; i < n; i++ ) {
+        for ( x = 0; x < a-c; x++ ) { 
+            if ( i == 0 && x == 0 ) { cout << '.'; }
+            else { cout << ' '; }}
+        for ( x = 0; x < z; x++ ) { cout << '*'; }
+        cout << endl;  z += 2;  c += 1; }
+
+    z = 1;  b = 1;  c = 1;
+
+    // BOTTOM TRIANGLES
+    for ( int i = 0; i < n; i++ ) {
+        // LEFT
+        for ( x = 0; x < n-b; x++ ) { cout << ' '; }
+        for ( x = 0; x < z; x++ ) { cout << '*'; }
+        // RIGHT
+        for ( x = 0; x < a-c; x++ ) { cout << ' '; }
+        for ( x = 0; x < z; x++ ) { cout << '*'; }
+        cout << endl;  z += 2;  c += 2;  b += 1; }
+}
