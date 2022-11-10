@@ -1,0 +1,85 @@
+#include <iostream>
+#include <string>
+#include <math.h>
+using namespace std;
+
+// STRUCTS FOR LOCATIONS AND PERSON
+struct DEFIB {
+    int number;
+    string name;
+    string address;
+    string phone;
+    long double lont;
+    long double latt;
+};
+struct PERSON {
+    long double lont;
+    long double latt;
+};
+
+int main()
+{
+    // VARIABLES
+    string lon, lat, word = "";
+    int n, min, j = 0;
+    cin >> lon >> lat >> n; cin.ignore();
+    long double distance[n], x, y, minD = 999999;
+    PERSON person;
+    DEFIB place[n];
+    
+    // PERSON LONGITUDE
+    while ( j < lon.length() ) { 
+        if ( lon[j] == ',' ) { lon[j] = '.'; } 
+        word += lon[j]; j++; }
+    person.lont = stof(word);
+
+    j = 0;  word = "";
+
+    // PERSON LATITUDE
+    while ( j < lat.length() ) { 
+        if ( lat[j] == ',' ) { lat[j] = '.'; } 
+        word += lat[j]; j++; }
+    person.latt = stof(word);
+
+    // LOCATIONS
+    for (int i = 0; i < n; i++) { 
+        string def;
+        getline(cin, def);
+        j = 0; word = "";
+
+        // INFO FOR EACH LOCATION
+        while ( j < def.length() ) { 
+            while ( def[j] != ';' ) { word += def[j]; j++; }
+            place[i].number = stoi(word); j++; word = "";
+
+            while ( def[j] != ';' ) { word += def[j]; j++; }
+            place[i].name = word; j++; word = "";
+
+            while ( def[j] != ';' ) { word += def[j]; j++; }
+            place[i].address = word; j++; word = "";
+
+            while ( def[j] != ';' ) { word += def[j]; j++; }
+            place[i].phone = word; j++; word = "";
+
+            while ( def[j] != ';' )  { 
+                if ( def[j] == ',' ) { def[j] = '.'; } 
+                word += def[j]; j++; }
+            place[i].lont = stof(word); j++; word = "";
+
+            while ( j < def.length() ) { 
+                if ( def[j] == ',' ) { def[j] = '.'; } 
+                word += def[j]; j++; }
+            place[i].latt = stof(word);  word = ""; }
+        
+        // CALCULATE DISTANCE FOR EACH LOCATION
+        x = ( place[i].lont - person.lont ) * ( cos( ( person.latt + place[i].latt ) / 2 ) );
+        y = ( place[i].latt - person.latt ) ;
+        distance[i] = sqrt( pow(x,2) + pow(y,2) ) * 6371; }
+
+    // FIND MINIMUM DISTANCE
+    for (int i = 0; i < n; i++) { 
+        if ( distance[i] < minD ) { minD = distance[i]; min = i; }}
+
+    // RESULT
+    cout << place[min].name << endl;
+}
