@@ -1,0 +1,58 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+    int w, h, countX, countY, counter=0, segsX=0, segsY=0, xp=0, yp=0;
+    cin >> w >> h >> countX >> countY; cin.ignore();
+
+/// Total X and Y Segments ///   
+    for (int i = countX+1; i > 0; i--)
+        {segsX += i;}
+    for (int i = countY+1; i > 0; i--)
+        {segsY += i;}
+    int x[segsX], y[segsY];
+
+/// Standard Input ///
+    x[xp]=w;
+    xp++;
+    y[0]=h;
+    yp++;
+    
+    for (int i = 1; i < countX+1; i++) 
+        {cin >> x[xp]; cin.ignore();
+        xp++;}
+    for (int i = 1; i < countY+1; i++)
+        {cin >> y[yp]; cin.ignore();
+        yp++;}
+
+/// Find all X segments ///
+    for (int i = 0; i < countX; i++)
+        {x[xp] = w - x[countX-i]; 
+        xp++;}
+    for (int i = countX; i > 1 ; i--)
+        {for (int a = i-1; a > 0; a--)
+            {x[xp] = x[i] - x[a];
+            xp++;}}
+
+/// Find all Y segments ///
+    for (int i = 0; i < countY; i++)
+        {y[yp] = h - y[countY-i];
+        yp++;}
+    for (int i = countY; i > 1 ; i--)
+        {for (int a = i-1; a > 0; a--)
+            {y[yp] = y[i] - y[a];
+            yp++;}}
+
+/// Find Squares ///
+    for (int i = 0; i < segsX; i++)
+        {for (int a = 0; a < (segsY); a++)
+            {if (y[a] == x[i]){
+                counter++;}}}
+
+    cout << counter << endl;
+}
