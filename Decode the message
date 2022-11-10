@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+    // VARIABLES
+    long long value, count, x, y, z, letters = 1;
+    bool over = false;
+    string code;
+    cin >> value; cin.ignore();
+    getline(cin, code);
+    count = value;
+
+    // GET LETTER COUNT
+    while ( count > code.length() ) { count = count / code.length(); letters ++;}
+
+    // GET EACH LETTER
+    for ( int i = 0; i < letters; i++) {
+        x = value % code.length();
+        if ( i == 0 ) { cout << code[x]; }
+        else {  if      ( x == 0 )       { x = code.length() ; over = true;  cout << code[x-1]; }
+                else if ( over == true ) { cout << code[x-2]; over = false; }
+                else                     { cout << code[x-1]; }}
+        value = value / code.length(); }
+}
