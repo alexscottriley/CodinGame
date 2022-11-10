@@ -1,0 +1,22 @@
+import sys
+import math
+power = []
+f, a, z, d = 0, 0, 0, 0
+s = 1
+n = int(input())
+
+for i in range(n):
+    power.append(int(input()))
+
+power.sort()
+d = (power[s] - power[f])
+
+while n > 1:
+    z = (power[s] - power[f])
+    if z < d:
+        d = z
+    n -= 1
+    f += 1
+    s += 1
+    
+print (d)
