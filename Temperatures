@@ -1,0 +1,24 @@
+import sys
+import math
+temp = []
+low = []
+lowP = 0
+
+n = int(input())
+for i in input().split():
+
+    t = int(i)
+    temp.append(t)
+    temp.sort()
+
+if n == 0:
+    print("0")
+
+else:
+    low.append((min(temp, key=abs)))
+    lowP = (low[0]) - (low[0]) - (low[0]) 
+    if (lowP) in temp:
+        low[0] = lowP
+    
+    print (low[0])
+
