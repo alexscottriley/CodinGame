@@ -1,0 +1,52 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+    // Standard Input
+    string message, code, norris;
+    getline(cin, message);
+    int ascii[message.length()], i, x;
+
+    // Get ASCII Values
+    for ( i=0; i < message.length(); i++ )
+        { ascii[i] = (int)message[i]; } 
+
+    // Convert ASCII Values to Binary
+    for ( i = 0; i < message.length(); i++ ) {
+        string arr[7];
+        for ( x = 6; x >= 0; x-- ) { 
+            if ( ascii[i] % 2 == 0 )
+                { arr[x] = "0"; }
+            else 
+                { arr[x] = "1"; }
+            
+            ascii[i] /= 2; }
+
+        for ( x = 0; x < 7; x++ )
+            { code.append(arr[x]); }}
+
+    // Convert Binary Values to Unary
+    for ( i = 0; i < code.length(); i = i ) {
+        if ( code[i] == '1' ) {
+            norris.append("0 ");
+            while ( code[i] == '1' ) {
+                norris.append("0");
+                i++; }}
+        else {
+            norris.append("00 ");
+            while ( code[i] == '0' ) {
+                norris.append("0");
+                i++; }}
+
+        norris.append(" "); }
+    
+    // Result
+    norris.pop_back();
+    cout << norris;
+} // End Main
+
