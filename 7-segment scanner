@@ -1,0 +1,27 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int number(char a, char b, char c, char d, char e, char f, char g)
+{
+    if      ( a == '_' && b == '|' && c == ' ' && d == '|' && e == '|' && f == '_' && g == '|' ) { return 0; }
+    else if ( a == ' ' && b == ' ' && c == ' ' && d == '|' && e == ' ' && f == ' ' && g == '|' ) { return 1; }
+    else if ( a == '_' && b == ' ' && c == '_' && d == '|' && e == '|' && f == '_' && g == ' ' ) { return 2; }
+    else if ( a == '_' && b == ' ' && c == '_' && d == '|' && e == ' ' && f == '_' && g == '|' ) { return 3; }
+    else if ( a == ' ' && b == '|' && c == '_' && d == '|' && e == ' ' && f == ' ' && g == '|' ) { return 4; }
+    else if ( a == '_' && b == '|' && c == '_' && d == ' ' && e == ' ' && f == '_' && g == '|' ) { return 5; }
+    else if ( a == '_' && b == '|' && c == '_' && d == ' ' && e == '|' && f == '_' && g == '|' ) { return 6; }
+    else if ( a == '_' && b == ' ' && c == ' ' && d == '|' && e == ' ' && f == ' ' && g == '|' ) { return 7; }
+    else if ( a == '_' && b == '|' && c == '_' && d == '|' && e == '|' && f == '_' && g == '|' ) { return 8; }
+    else    { return 9; }
+}
+
+int main()
+{
+    string one, two, three;
+    getline(cin, one); getline(cin, two); getline(cin, three);
+
+    for ( int a = 0; a < one.length(); a += 3 ) {
+        int b = a+1, c = a+2;
+        cout << number(one[b],two[a],two[b],two[c],three[a],three[b],three[c]); }
+}
