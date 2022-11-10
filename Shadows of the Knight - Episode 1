@@ -1,0 +1,70 @@
+import sys, math
+
+w, h = [int(i) for i in input().split()]
+n = int(input()) 
+x0, y0 = [int(i) for i in input().split()]
+
+w -= 1
+h -= 1  
+maxX, maxY, minX, minY = w, h, 0, 0
+
+while True:
+    bomb_dir = input()    
+    while bomb_dir != "":
+    
+        while bomb_dir == "U":
+            maxY = y0 - 1
+            y0 = int((maxY + minY)/2)
+            print (x0,y0)
+            bomb_dir = input()
+                
+        while bomb_dir == "D":
+            minY = y0 + 1
+            y0 = int((maxY + minY)/2)
+            print (x0,y0)
+            bomb_dir = input()
+                        
+        while bomb_dir == "L":
+            maxX = x0 - 1
+            x0 = int((maxX + minX)/2)
+            print (x0,y0)
+            bomb_dir = input()
+                       
+        while bomb_dir == "R":
+            minX = x0 + 1
+            x0 = int((maxX + minX)/2)
+            print (x0,y0)
+            bomb_dir = input()
+        
+        while bomb_dir == "UR":
+            maxY = y0 - 1
+            minX = x0 + 1
+            y0 = int((maxY + minY)/2)
+            x0 = int((maxX + minX)/2)
+            print (x0,y0)
+            bomb_dir = input()
+                
+        while bomb_dir == "UL":
+            maxY = y0 - 1
+            maxX = x0 - 1
+            x0 = int((maxX + minX)/2)
+            y0 = int((maxY + minY)/2)
+            print (x0,y0)
+            bomb_dir = input()
+                        
+        while bomb_dir == "DR":
+            minY = y0 + 1
+            minX = x0 + 1
+            x0 = int((maxX + minX)/2)
+            y0 = int((maxY + minY)/2)
+            print (x0,y0)
+            bomb_dir = input()
+                       
+        while bomb_dir == "DL":
+            minY = y0 + 1
+            maxX = x0 - 1
+            x0 = int((maxX + minX)/2)
+            y0 = int((maxY + minY)/2)
+            print (x0,y0)
+            bomb_dir = input()
+
