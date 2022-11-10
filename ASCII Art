@@ -1,0 +1,59 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
+int letter(char t, int L) 
+{
+    if      ( t == 'A' || t == 'a' ) { return (L*0); }
+    else if ( t == 'B' || t == 'b' ) { return (L*1); }
+    else if ( t == 'C' || t == 'c' ) { return (L*2); }
+    else if ( t == 'D' || t == 'd' ) { return (L*3); }
+    else if ( t == 'E' || t == 'e' ) { return (L*4); }
+    else if ( t == 'F' || t == 'f' ) { return (L*5); }
+    else if ( t == 'G' || t == 'g' ) { return (L*6); }
+    else if ( t == 'H' || t == 'h' ) { return (L*7); }
+    else if ( t == 'I' || t == 'i' ) { return (L*8); }
+    else if ( t == 'J' || t == 'j' ) { return (L*9); }
+    else if ( t == 'K' || t == 'k' ) { return (L*10); }
+    else if ( t == 'L' || t == 'l' ) { return (L*11); }
+    else if ( t == 'M' || t == 'm' ) { return (L*12); }
+    else if ( t == 'N' || t == 'n' ) { return (L*13); }
+    else if ( t == 'O' || t == 'o' ) { return (L*14); }
+    else if ( t == 'P' || t == 'p' ) { return (L*15); }
+    else if ( t == 'Q' || t == 'q' ) { return (L*16); }
+    else if ( t == 'R' || t == 'r' ) { return (L*17); }
+    else if ( t == 'S' || t == 's' ) { return (L*18); }
+    else if ( t == 'T' || t == 't' ) { return (L*19); }
+    else if ( t == 'U' || t == 'u' ) { return (L*20); }
+    else if ( t == 'V' || t == 'v' ) { return (L*21); }
+    else if ( t == 'W' || t == 'w' ) { return (L*22); }
+    else if ( t == 'X' || t == 'x' ) { return (L*23); }
+    else if ( t == 'Y' || t == 'y' ) { return (L*24); }
+    else if ( t == 'Z' || t == 'z' ) { return (L*25); }
+    else { return (L*26); }
+}
+
+int main()
+{
+    int L, H;
+    string T;
+    cin >> L >> H; cin.ignore();
+    getline(cin, T);
+
+    for ( int x = 0; x < H; x++ ) {
+        string row, alpha[H];
+        getline(cin, row);
+        alpha[x] = row;
+
+        for ( int y = 0; y < T.length(); y++ ) {
+            int word[T.length()];
+            word[y] = letter(T[y], L);
+
+            for ( int z = 0; z < L; z++ ) {
+                cout << alpha[x][word[y]+z]; }}
+
+        cout << endl; }
+}
