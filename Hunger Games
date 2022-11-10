@@ -1,0 +1,64 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+    // VARIABLES
+    int players, turns;
+    cin >> players; cin.ignore();
+    vector<string> name(players), killed(players), killedBy(players);
+    for (int i = 0; i < players; i++) { getline(cin, name[i]); }
+    cin >> turns; cin.ignore();
+    sort(name.begin(), name.end());
+
+    // GET TURN INFO
+    for (int i = 0; i < turns; i++) {
+        string victim, killer, info;
+        getline(cin, info);
+
+        // KILLERS
+        for ( int x = 0; x < info.length(); x++ ) {
+            while ( info[x] != ' ' ) { killer += info[x]; x++;}
+            x += 8;
+            while ( x < info.length() ) { victim += info[x]; x++;}
+            victim += ", ";}
+        for (int x = 0; x < players; x++) {
+            if ( killer == name[x] ) { killed[x] += victim; }}
+        
+        // VICTIMS
+        for (int x = 0; x < players; x++) {
+            int y = 0;
+            while ( y < victim.length() ) {
+                string oneName;
+                while ( victim[y] != ',' && y < victim.length() ) { oneName += victim[y]; y++; }
+                if ( oneName == name[x] ) { killedBy[x] += killer; }
+                y += 2; }}}
+
+    // ALPHABETIZE VICTIMS
+    for (int i = 0; i < players; i++) {  
+        string k[players];
+        int y = 0;
+        for ( int x = 0; x < killed[i].length(); x++ ) {
+            while ( killed[i][x] != ',' ) { k[y] += killed[i][x]; x++;}
+            x++; y++; }
+        vector<string> killd(y);
+        for ( int x = 0; x < y; x++ ) { killd[x] = k[x]; }
+        killed[i] = "";
+        sort(killd.begin(), killd.end());
+        for ( int x = 0; x < y; x++ ) { killed[i] += killd[x]; killed[i] += ", "; }}          
+
+    // RESULTS
+    for (int i = 0; i < players; i++) {
+        cout << "Name: " << name[i] << endl;
+
+        if ( killed[i] == "" ) { killed[i] = "None"; }
+        else { killed[i].pop_back(); killed[i].pop_back(); }
+        cout << "Killed: " << killed[i] << endl;
+        
+        if ( killedBy[i] == "" ) { killedBy[i] = "Winner"; }
+        cout << "Killer: " << killedBy[i] << endl; 
+        if ( i != players-1 ) { cout << endl; }}
+}
