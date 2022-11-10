@@ -1,0 +1,78 @@
+import sys
+import math
+
+# The while loop represents the game.
+# Each iteration represents a turn of the game
+# where you are given inputs (the heights of the mountains)
+# and where you have to print an output (the index of the mountain to fire on)
+# The inputs you are given are automatically updated according to your last actions.
+lst = []
+
+# game loop
+
+while True:
+    for i in range(8):
+        mountain_h = int(input())  # represents the height of one mountain.
+        lst.append(mountain_h)
+
+        
+    # Write an action using print
+    # To debug: print("Debug messages...", file=sys.stderr)
+    # The index of the mountain to fire on.
+    for i in range(8):
+        if lst[0] == max(lst):
+            print ("0")
+            lst.clear()
+            for i in range(8):
+                mountain_h = int(input()) 
+                lst.append(mountain_h)
+                        
+        elif lst[1] == max(lst):
+            print ("1")
+            lst.clear()
+            for i in range(8):
+                mountain_h = int(input())  
+                lst.append(mountain_h)
+    
+        elif lst[2] == max(lst):
+            print ("2")
+            lst.clear()
+            for i in range(8):
+                mountain_h = int(input()) 
+                lst.append(mountain_h)
+             
+        elif lst[3] == max(lst):
+            print ("3")
+            lst.clear()
+            for i in range(8):
+                mountain_h = int(input()) 
+                lst.append(mountain_h)
+            
+        elif lst[4] == max(lst):
+            print ("4")
+            lst.clear()
+            for i in range(8):
+                mountain_h = int(input()) 
+                lst.append(mountain_h)
+    
+        elif lst[5] == max(lst):
+            print ("5")
+            lst.clear()
+            for i in range(8):
+                mountain_h = int(input()) 
+                lst.append(mountain_h)
+                
+        elif lst[6] == max(lst):
+            print ("6")
+            lst.clear()
+            for i in range(8):
+                mountain_h = int(input()) 
+                lst.append(mountain_h)
+                
+        elif lst[7] == max(lst):
+            print ("7")
+            lst.clear()
+            for i in range(8):
+                mountain_h = int(input()) 
+                lst.append(mountain_h)
+
